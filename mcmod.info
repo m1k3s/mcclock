@@ -1,0 +1,17 @@
+[
+	{
+		"modid": "mcclock",
+		"name": "MC Clock Mod",
+		"description": "digital clock that shows Minecraft time in HH:MM:SS format",
+		"version": $version,
+		"mcversion": $mcversion,
+		"url": "",
+		"updateUrl": "",
+		"authorList": [ "crackedEgg" ],
+		"credits": "Created by crackedEgg",
+		"logoFile": "",
+		"screenshots": [],
+		"parent": "",
+		"dependencies": [ "mod_MinecraftForge" ]
+	}
+]
