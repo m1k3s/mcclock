@@ -55,7 +55,7 @@ public class MCClockRenderer extends Gui {
             int textY = y - (fontRenderer.FONT_HEIGHT / 2);
 
             boolean unicodeFlag = fontRenderer.getUnicodeFlag();
-            fontRenderer.setUnicodeFlag(false);
+            fontRenderer.setUnicodeFlag(true);
 
             GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
