@@ -50,8 +50,8 @@ public class MCClockRenderer extends Gui {
         if (MINECRAFT.inGameHasFocus && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
             ScaledResolution sr = new ScaledResolution(MINECRAFT);
 
-            int x = (sr.getScaledWidth() / 2) + 92;
-            int y = sr.getScaledHeight() - 11;
+            int x = sr.getScaledWidth() - fontRenderer.getStringWidth("00:00:00") - 8; //sr.getScaledWidth() / 2) + 92;
+            int y = sr.getScaledHeight() - fontRenderer.FONT_HEIGHT - 8; //sr.getScaledHeight() - 11;
             int textY = y - (fontRenderer.FONT_HEIGHT / 2);
 
             boolean unicodeFlag = fontRenderer.getUnicodeFlag();
@@ -61,6 +61,7 @@ public class MCClockRenderer extends Gui {
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
+//            drawGradientRect(x - 2, y - 1, x + fontRenderer.getStringWidth("00:00:00") + 10, y + fontRenderer.FONT_HEIGHT + 1, 0xdd000000, 0xdd525252);
             // draw the text
             fontRenderer.drawStringWithShadow(formatMinecraftTime(MINECRAFT.world.getWorldTime()), x, textY, COLOR_RED);
 
