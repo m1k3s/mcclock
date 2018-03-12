@@ -28,9 +28,11 @@ import org.lwjgl.input.Keyboard;
 
 public class ModKeyBinding {
     private static final String CATEGORY = "key.category.mcclock:general";
-    public static final KeyBinding TOGGLE_CLOCK = new KeyBinding("key.mcclock:toggle_clock", KeyConflictContext.IN_GAME, Keyboard.KEY_P, CATEGORY);
+    public static final KeyBinding TOGGLE_CLOCK = new KeyBinding("key.mcclock:toggleClock", KeyConflictContext.IN_GAME, Keyboard.KEY_P, CATEGORY);
+    public static final KeyBinding TOGGLE_REALTIME = new KeyBinding("key.mcclock.toggleRealTime", KeyConflictContext.IN_GAME, Keyboard.KEY_R, CATEGORY);
 
     public static void registerKeyBinding() {
         ClientRegistry.registerKeyBinding(TOGGLE_CLOCK);
+        ClientRegistry.registerKeyBinding(TOGGLE_REALTIME);
     }
 }

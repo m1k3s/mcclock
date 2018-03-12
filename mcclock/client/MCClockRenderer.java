@@ -26,10 +26,12 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-//import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SuppressWarnings("unused")
 public class MCClockRenderer extends Gui {
@@ -41,8 +43,7 @@ public class MCClockRenderer extends Gui {
     private static FontRenderer fontRenderer = MINECRAFT.fontRenderer;
 
     private static boolean isVisible = true;
-//    private static int count = 0;
-//    private String display;
+    private static boolean realTime = false;
 
 
     @SubscribeEvent
@@ -65,17 +66,14 @@ public class MCClockRenderer extends Gui {
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-//            double compassHeading = calcCompassHeading(MINECRAFT.player.rotationYaw);
-//            double spawnDir = getSpawnDirection(MINECRAFT.player.rotationYaw);
-
-//            if (count % 10 == 0) {
-//                display = String.format("§l%3.1f/%3.1f", compassHeading, spawnDir);
-//            }
-//            count++;
-
             // draw the text
-            fontRenderer.drawStringWithShadow(formatMinecraftTime(MINECRAFT.world.getWorldTime()), x, textY, COLOR_RED);
-//            fontRenderer.drawStringWithShadow(display, x2, textY + fontRenderer.FONT_HEIGHT + 1, COLOR_RED);
+            String timeStr;
+            if (realTime) {
+                timeStr = formatRealTime();
+            } else {
+                timeStr = formatMinecraftTime(MINECRAFT.world.getWorldTime());
+            }
+            fontRenderer.drawStringWithShadow(timeStr, x, textY, COLOR_RED);
 
             GlStateManager.disableRescaleNormal();
             GlStateManager.disableBlend();
@@ -92,21 +90,18 @@ public class MCClockRenderer extends Gui {
         return String.format("§l%02d:%02d:%02d", McHours, McMinutes, McSeconds);
     }
 
-    public static void toggle_clock() {
+    public String formatRealTime() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        return String.format("§l%s", sdf.format(date));
+    }
+
+    public static void toggleClock() {
         isVisible = !isVisible;
     }
 
-//    private double calcCompassHeading(double yaw) {
-//        return (((yaw + 180.0) % 360) + 360) % 360;
-//    }
-//
-//    // difference angle in degrees the player is facing from the spawn point.
-//    // zero degrees means the player is facing the spawn point.
-//    public double getSpawnDirection(double yaw) {
-//        BlockPos blockpos = MINECRAFT.world.getSpawnPoint();
-//        double delta = Math.atan2(blockpos.getZ() - MINECRAFT.player.posZ, blockpos.getX() - MINECRAFT.player.posX);
-//        double relAngle = delta - Math.toRadians(yaw);
-//        return MathHelper.wrapDegrees(Math.toDegrees(relAngle) - 90.0); // degrees
-//    }
+    public static void toggleRealTime() {
+        realTime = ! realTime;
+    }
 
 }
