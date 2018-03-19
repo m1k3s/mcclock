@@ -3,4 +3,5 @@ language.region=US
 language.code=en_US
 
 key.category.mcclock:general=MC Clock Keys
-key.mcclock:toggle_clock=Toggle Digital Clock
+key.mcclock:toggle_clock=Toggle Clock Visibility
+key.mcclock:toggle_real_time=Toggle Clock Local Time

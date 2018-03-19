@@ -35,7 +35,7 @@ import java.util.Date;
 
 @SuppressWarnings("unused")
 public class MCClockRenderer extends Gui {
-    private static final int COLOR_RED = 0xffff0000;
+    private static final int CLOCK_COLOR = 0xffff0000; // red
     private static final int MAX_TICKS = 24000;
     private static final double TICKS_2_SECONDS = 3.6;
 
@@ -73,7 +73,7 @@ public class MCClockRenderer extends Gui {
             } else {
                 timeStr = formatMinecraftTime(MINECRAFT.world.getWorldTime());
             }
-            fontRenderer.drawStringWithShadow(timeStr, x, textY, COLOR_RED);
+            fontRenderer.drawStringWithShadow(timeStr, x, textY, CLOCK_COLOR);
 
             GlStateManager.disableRescaleNormal();
             GlStateManager.disableBlend();

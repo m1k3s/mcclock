@@ -35,10 +35,10 @@ public class KeyBindingHandler {
     public static void clientTick(final TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
 
-        if (ModKeyBinding.TOGGLE_CLOCK.isPressed()) {
+        if (ModKeyBinding.TOGGLE_CLOCK_VISIBILITY.isPressed()) {
             MCClockRenderer.toggleClock();
         }
-        if (ModKeyBinding.TOGGLE_REALTIME.isPressed()) {
+        if (ModKeyBinding.TOGGLE_CLOCK_LOCALTIME.isPressed()) {
             MCClockRenderer.toggleRealTime();
         }
     }
