@@ -55,7 +55,7 @@ public class MCClockRenderer extends Gui {
             ScaledResolution sr = new ScaledResolution(MINECRAFT);
 
             int x = sr.getScaledWidth() - fontRenderer.getStringWidth("00:00:00") - 8; //sr.getScaledWidth() / 2) + 92;
-            int x2 = sr.getScaledWidth() - fontRenderer.getStringWidth("0000.0/-0000.0") - 8;
+            //int x2 = sr.getScaledWidth() - fontRenderer.getStringWidth("0000.0/-0000.0") - 8;
             int y = sr.getScaledHeight() - 11;
             int textY = y - (fontRenderer.FONT_HEIGHT / 2);
 
@@ -101,7 +101,7 @@ public class MCClockRenderer extends Gui {
     }
 
     public static void toggleRealTime() {
-        realTime = ! realTime;
+        realTime = !realTime;
     }
 
 }
